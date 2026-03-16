@@ -1,0 +1,4 @@
+.modalRoot,
+.modalContent {
+  z-index: 1050;
+}
