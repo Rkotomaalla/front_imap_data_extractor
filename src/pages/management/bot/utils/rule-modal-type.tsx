@@ -26,6 +26,7 @@ export function DateInput({ field }: InputProps) {
 
 	return <DatePicker value={dateValue} onChange={(date) => field.onChange(date?.toISOString())} className="w-full" />;
 }
+
 export function BooleanInput({ field }: InputProps) {
 	return (
 		<ToggleGroup
@@ -43,6 +44,7 @@ export function BooleanInput({ field }: InputProps) {
 		</ToggleGroup>
 	);
 }
+
 export function NumberInputField({ field }: InputProps) {
 	return <Input type="number" {...field} />;
 }

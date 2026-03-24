@@ -58,6 +58,51 @@ export interface UserInfo {
 // +++
 
 // interface pour la gestiond des regles
+export interface Action{
+	action_id:  number,
+	action_label : string,
+	need_attachment : boolean,
+	child_actions? : number[]
+}
+export interface ActionList{
+	success : boolean, 
+	count : number ,
+	results : Action []
+}
+export interface FormAction{
+	parent_index ?:number,
+	action_id?: number , 
+	action_label? : string,
+	value ?: string,
+	child_action?:FormAction[]
+}
+
+export interface ChildAction{
+	action_id : number, 
+	action_label : string, 
+	need_attachment : boolean,
+	child_action ?: ChildDetail[] 
+}
+
+export interface ChildDetail{
+	action_id : number, 
+	action_label : string
+}
+
+export interface Directory{
+	id ?: string,
+	dir_id:number, 
+	dir_label:string, 
+	parents_dir? : number[],
+	children?: Directory[]
+}
+
+export interface DirectoryList{
+	success? : boolean,
+	count ?: number, 
+	results ?: Directory[]	
+}
+
 export interface Field {
 	field_id: number;
 	field_name: string;
@@ -65,6 +110,7 @@ export interface Field {
 	type: string;
 	description: string;
 }
+
 export interface Operator {
 	operator_id: number;
 	description: string;
@@ -97,6 +143,11 @@ export interface Filter {
 	rules: Rule[];
 }
 // +++
+export interface BotAction{
+	action_id?:number;
+	value?: any
+	sub_action? : BotAction[]
+}
 
 // entities des bots
 export interface Bot {
@@ -107,6 +158,7 @@ export interface Bot {
 	status?: number;
 	created_date?: string;
 	filter: Filter;
+	actions?: BotAction []
 }
 export interface BotList {
 	count: number;

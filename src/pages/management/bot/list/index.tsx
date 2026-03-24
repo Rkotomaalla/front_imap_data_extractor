@@ -55,7 +55,7 @@ export default function BotPage() {
 	// Charger les bots avec filtres
 	const loadBotList = async (page: number) => {
 		try {
-			setPage(1);
+			setPage(page);
 		} catch (error) {
 			console.error(error);
 		}

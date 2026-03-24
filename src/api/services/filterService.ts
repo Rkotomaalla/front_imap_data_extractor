@@ -2,16 +2,16 @@ import apiClient from "../apiClient";
 import type { OperatorsByFieldId, FieldsList } from "#/entity";
 
 export enum FilterApi {
-	GetFieds = "/fields/",
+	GetFields = "/fields/",
 	Logout = "/auth/logout",
 	Refresh = "/auth/refresh",
 	User = "/user",
 }
 
-const getAllFields = () => apiClient.get<FieldsList>({ url: FilterApi.GetFieds });
+const getAllFields = () => apiClient.get<FieldsList>({ url: FilterApi.GetFields });
 const getFieldOperators = (fieldId: number) =>
 	apiClient.get<OperatorsByFieldId>({
-		url: `${FilterApi.GetFieds}${fieldId}/operators`, // interpolation correcte
+		url: `${FilterApi.GetFields}${fieldId}/operators`, // interpolation correcte
 	});
 
 export default {

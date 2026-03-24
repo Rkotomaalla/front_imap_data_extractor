@@ -60,6 +60,7 @@ export function RuleModal({ title, show, formValue, onOk, onCancel, addRule, rul
 	};
 
 	// Charger les fields
+  // initialisation des donnes au premier recharge de lȧpage
 	useEffect(() => {
 		const loadFields = async () => {
 			try {

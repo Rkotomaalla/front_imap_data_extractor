@@ -89,8 +89,8 @@ export default function RuleTab({ RULES, setRULES }: Props) {
 			key: "operation",
 			align: "center",
 			width: 100,
-			render: (_, record) => (
-				<div className="flex w-full justify-center text-gray">
+			render: (_, record,index) => (
+				<div className="flex w-full justify-center gap-2">
 					<Button
 						variant="ghost"
 						size="icon"
@@ -109,14 +109,30 @@ export default function RuleTab({ RULES, setRULES }: Props) {
 					>
 						<Icon icon="solar:pen-bold-duotone" size={18} />
 					</Button>
-					<Button variant="ghost" size="icon">
-						<Icon icon="mingcute:delete-2-fill" size={18} className="text-error!" />
+					<Button
+                variant="ghost"
+                size="icon"
+                onClick={() => onDelete(record,index)}
+            >
+						<Icon icon="mingcute:delete-2-fill" size={18} className="text-red-500" />
 					</Button>
 				</div>
 			),
 		},
 	];
 
+	const onDelete = (record: TableRule, index: number) => {
+		console.log("suppression de la règle:", record);
+
+		setRulesToShow(prevRules =>
+			prevRules.filter((_, i) => i !== index)
+		);
+
+		setRULES(prevRules =>
+			prevRules.filter((_, i) => i !== index)
+		);
+	};
+	
 	const onCreate = () => {
 		setRuleModalProps((prev) => ({
 			...prev,
@@ -137,9 +153,9 @@ export default function RuleTab({ RULES, setRULES }: Props) {
 		}));
 	};
 
-	useEffect(() => {
-		setRulesToShow(RULES);
-	}, [RULES]);
+	// useEffect(() => {
+	// 	setRulesToShow(RULES);
+	// }, [RULES]);
 	return (
 		<Card>
 			<CardHeader>
